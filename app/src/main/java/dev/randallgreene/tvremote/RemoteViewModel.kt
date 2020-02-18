@@ -27,91 +27,135 @@ class RemoteViewModel(application: Application) : AndroidViewModel(application) 
         viewModelScope.cancel()
     }
 
-    fun sendPower() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.POWER)
+    fun sendPower() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.POWER)
+        }
     }
 
-    fun sendVolumeUp() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.VOLUME_UP)
+    fun sendVolumeUp() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.VOLUME_UP)
+        }
     }
 
-    fun sendVolumeDown() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.VOLUME_DOWN)
+    fun sendVolumeDown() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.VOLUME_DOWN)
+        }
     }
 
-    fun sendChannelUp() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.CHANNEL_UP)
+    fun sendChannelUp() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.CHANNEL_UP)
+        }
     }
 
-    fun sendChannelDown() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.CHANNEL_DOWN)
+    fun sendChannelDown() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.CHANNEL_DOWN)
+        }
     }
 
-    fun sendMute() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.MUTE)
+    fun sendMute() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.MUTE)
+        }
     }
 
-    fun sendInput() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.INPUT)
+    fun sendInput() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.INPUT)
+        }
     }
 
-    fun sendUp() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.UP)
+    fun sendUp() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.UP)
+        }
     }
 
-    fun sendDown() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.DOWN)
+    fun sendDown() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.DOWN)
+        }
     }
 
-    fun sendRight() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.RIGHT)
+    fun sendRight() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.RIGHT)
+        }
     }
 
-    fun sendLeft() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.LEFT)
+    fun sendLeft() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.LEFT)
+        }
     }
 
-    fun sendSelect() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.SELECT)
+    fun sendSelect() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.SELECT)
+        }
     }
 
-    fun sendZero() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.ZERO)
+    fun sendZero() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.ZERO)
+        }
     }
 
-    fun sendOne() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.ONE)
+    fun sendOne() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.ONE)
+        }
     }
 
-    fun sendTwo() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.TWO)
+    fun sendTwo() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.TWO)
+        }
     }
 
-    fun sendThree() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.THREE)
+    fun sendThree() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.THREE)
+        }
     }
 
-    fun sendFour() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.FOUR)
+    fun sendFour() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.FOUR)
+        }
     }
 
-    fun sendFive() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.FIVE)
+    fun sendFive() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.FIVE)
+        }
     }
 
-    fun sendSix() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.SIX)
+    fun sendSix() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.SIX)
+        }
     }
 
-    fun sendSeven() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.SEVEN)
+    fun sendSeven() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.SEVEN)
+        }
     }
 
-    fun sendEight() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.EIGHT)
+    fun sendEight() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.EIGHT)
+        }
     }
 
-    fun sendNine() = viewModelScope.launch {
-        remoteRepository.sendButton(RemoteButton.NINE)
+    fun sendNine() {
+        viewModelScope.launch {
+            remoteRepository.sendButton(RemoteButton.NINE)
+        }
     }
 }
