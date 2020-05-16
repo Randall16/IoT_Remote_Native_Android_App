@@ -4,9 +4,9 @@ import androidx.annotation.WorkerThread
 import retrofit2.HttpException
 import java.lang.Exception
 
-class RemoteRepository(private val ipAddress: String) {
+class RemoteRepository(url: String) {
 
-    private val remoteApi = createRemoteAPI(ipAddress)
+    private var remoteApi = createRemoteAPI(url)
 
     @WorkerThread
     suspend fun sendButton(button: RemoteButton): String {
@@ -21,5 +21,9 @@ class RemoteRepository(private val ipAddress: String) {
         }
 
         return response ?: ""
+    }
+
+    fun updateURL(url: String) {
+        remoteApi = createRemoteAPI(url)
     }
 }

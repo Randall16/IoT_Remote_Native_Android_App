@@ -9,13 +9,18 @@ import android.text.method.DigitsKeyListener
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 
 
 class IpDialogFragment : DialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder = AlertDialog.Builder(requireActivity())
+    private lateinit var viewModel: RemoteViewModel
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        viewModel = ViewModelProvider(requireActivity()).get(RemoteViewModel::class.java)
+
+        val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle("Set IP Address")
 
         val editText = EditText(requireContext())
@@ -27,8 +32,8 @@ class IpDialogFragment : DialogFragment() {
         builder.setPositiveButton("Confirm") { dialog, whichButton ->
             val ip = editText.text.toString()
             saveToSharedPreferences(ip)
+            viewModel.updateIpAddress()
         }
-
 
         builder.setNegativeButton("Cancel") { dialog, whichButton ->
             // do nothing

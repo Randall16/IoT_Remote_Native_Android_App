@@ -1,6 +1,5 @@
 package dev.randallgreene.tvremote
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.lifecycle.ViewModelProvider
 
 
 class RemoteFragment : Fragment() {
@@ -52,7 +52,7 @@ class RemoteFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RemoteViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(RemoteViewModel::class.java)
     }
 
     private fun findViews(view: View) {
