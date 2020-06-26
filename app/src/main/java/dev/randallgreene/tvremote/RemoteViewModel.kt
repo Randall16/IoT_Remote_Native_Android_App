@@ -16,6 +16,7 @@ class RemoteViewModel(private val vmApplication: Application) : AndroidViewModel
     init {
         val ip = retrieveIpAddress()
         val url = "http://$ip:5000"
+        Log.e("eee", url)
         remoteRepository = RemoteRepository(url)
     }
 

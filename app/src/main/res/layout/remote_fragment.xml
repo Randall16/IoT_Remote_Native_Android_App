@@ -7,26 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".RemoteFragment">
 
-    <ImageButton
-        android:id="@+id/buttonUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:src="@android:drawable/arrow_up_float"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEnter"
-        app:layout_constraintEnd_toEndOf="@+id/buttonEnter"
-        app:layout_constraintStart_toStartOf="@+id/buttonEnter" />
-
-    <ImageButton
-        android:id="@+id/buttonRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/arrow_up_float"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonEnter"
-        app:layout_constraintEnd_toStartOf="@+id/buttonChUp"
-        app:layout_constraintStart_toEndOf="@+id/buttonUp"
-        app:layout_constraintTop_toTopOf="@+id/buttonEnter" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -120,12 +100,64 @@
     <Button
         android:id="@+id/button0"
         android:layout_width="wrap_content"
-        android:layout_height="75dp"
+        android:layout_height="64dp"
         android:layout_marginTop="16dp"
         android:text="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
+
+    <ImageButton
+        android:id="@+id/buttonUp"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEnter"
+        app:layout_constraintEnd_toEndOf="@+id/buttonEnter"
+        app:layout_constraintStart_toStartOf="@+id/buttonEnter" />
+
+    <ImageButton
+        android:id="@+id/buttonRight"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:src="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonEnter"
+        app:layout_constraintEnd_toStartOf="@+id/buttonChUp"
+        app:layout_constraintStart_toEndOf="@+id/buttonUp"
+        app:layout_constraintTop_toTopOf="@+id/buttonEnter" />
+
+    <ImageButton
+        android:id="@+id/buttonLeft"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:src="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonEnter"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEnter"
+        app:layout_constraintStart_toEndOf="@+id/buttonVolUp"
+        app:layout_constraintTop_toTopOf="@+id/buttonEnter" />
+
+    <ImageButton
+        android:id="@+id/buttonDown"
+        android:layout_width="52dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:src="@android:drawable/arrow_down_float"
+        app:layout_constraintEnd_toEndOf="@+id/buttonEnter"
+        app:layout_constraintStart_toStartOf="@+id/buttonEnter"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEnter" />
+
+    <Button
+        android:id="@+id/buttonEnter"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:background="@drawable/circle_button"
+        android:text="Enter"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonVolDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVolUp" />
 
     <Button
         android:id="@+id/buttonVolUp"
@@ -172,27 +204,15 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonChUp" />
 
     <ImageButton
-        android:id="@+id/buttonLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:src="@android:drawable/arrow_up_float"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonEnter"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEnter"
-        app:layout_constraintStart_toEndOf="@+id/buttonVolUp"
-        app:layout_constraintTop_toTopOf="@+id/buttonEnter" />
-
-    <Button
-        android:id="@+id/buttonEnter"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/circle_button"
-        android:text="Enter"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonVolDown"
+        android:id="@+id/buttonPower"
+        android:layout_width="128dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/ic_lock_power_off"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonVolUp" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDown" />
 
     <ImageButton
         android:id="@+id/buttonMute"
@@ -204,17 +224,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonVolDown" />
 
-    <ImageButton
-        android:id="@+id/buttonPower"
-        android:layout_width="128dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="16dp"
-        android:src="@android:drawable/ic_lock_power_off"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDown" />
-
     <Button
         android:id="@+id/buttonInput"
         android:layout_width="78dp"
@@ -224,15 +233,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonPower"
         app:layout_constraintTop_toBottomOf="@+id/buttonChDown" />
-
-    <ImageButton
-        android:id="@+id/buttonDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@android:drawable/arrow_down_float"
-        app:layout_constraintEnd_toEndOf="@+id/buttonEnter"
-        app:layout_constraintStart_toStartOf="@+id/buttonEnter"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEnter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
