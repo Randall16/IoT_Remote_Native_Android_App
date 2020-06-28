@@ -1,36 +1,18 @@
 package dev.randallgreene.tvremote
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import kotlinx.coroutines.*
 
-class RemoteViewModel(private val vmApplication: Application) : AndroidViewModel(vmApplication) {
+class RemoteViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val remoteRepository: RemoteRepository
+    private val remoteRepository = RemoteRepository(application)
 
     private val job = Job()
     private val viewModelScope = CoroutineScope(Dispatchers.IO + job)
 
-    init {
-        val ip = retrieveIpAddress()
-        val url = "http://$ip:5000"
-        Log.e("eee", url)
-        remoteRepository = RemoteRepository(url)
-    }
-
-    private fun retrieveIpAddress(): String {
-        val defaultIP = "192.168.1.160" // Tallahassee IP address
-        val prefs = vmApplication.getSharedPreferences(USER_PREFS, Context.MODE_PRIVATE)
-        val ip= prefs.getString(IP_KEY, defaultIP) ?: defaultIP
-        return ip
-    }
-
-    fun updateIpAddress() {
-        val ip = retrieveIpAddress()
-        val url = "http://$ip:5000"
-        remoteRepository.updateURL(url)
+    fun updateIpAddress(ipAddress: String) {
+        remoteRepository.updateIpAddress(ipAddress)
     }
 
     override fun onCleared() {

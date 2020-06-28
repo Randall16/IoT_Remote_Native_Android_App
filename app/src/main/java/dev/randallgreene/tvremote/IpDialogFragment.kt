@@ -2,9 +2,7 @@ package dev.randallgreene.tvremote
 
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -14,11 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 
 class IpDialogFragment : DialogFragment() {
 
-    private lateinit var viewModel: RemoteViewModel
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        viewModel = ViewModelProvider(requireActivity()).get(RemoteViewModel::class.java)
+        val viewModel = ViewModelProvider(requireActivity()).get(RemoteViewModel::class.java)
 
         val builder = AlertDialog.Builder(requireActivity())
         builder.setTitle("Set IP Address")
@@ -31,8 +27,7 @@ class IpDialogFragment : DialogFragment() {
 
         builder.setPositiveButton("Confirm") { dialog, whichButton ->
             val ip = editText.text.toString()
-            saveToSharedPreferences(ip)
-            viewModel.updateIpAddress()
+            viewModel.updateIpAddress(ip)
         }
 
         builder.setNegativeButton("Cancel") { dialog, whichButton ->
@@ -40,14 +35,5 @@ class IpDialogFragment : DialogFragment() {
         }
 
         return builder.show()
-    }
-
-    private fun saveToSharedPreferences(ipAddress: String) {
-        val prefs = requireActivity().getSharedPreferences(
-            USER_PREFS,
-            Context.MODE_PRIVATE
-        )
-
-        prefs.edit().putString(IP_KEY, ipAddress).apply()
     }
 }
