@@ -1,12 +1,19 @@
 package dev.randallgreene.tvremote
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 
@@ -52,7 +59,39 @@ class RemoteFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        subscribeToViewModel()
+    }
+
+    private fun subscribeToViewModel() {
+
         viewModel = ViewModelProvider(requireActivity()).get(RemoteViewModel::class.java)
+
+        // Adding logic to vibrate upon successful API request
+        val vibrator = requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        val vibrationTime: Long = 25
+
+        val toast = Toast.makeText(
+            requireContext(),
+            "Request failed. Make sure Wifi is on and the proper IP address is set.",
+            Toast.LENGTH_LONG
+        )
+
+        viewModel.requestSuccess.observe(viewLifecycleOwner, Observer {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(
+                    vibrationTime,
+                    VibrationEffect.DEFAULT_AMPLITUDE)
+                )
+            } else {
+                //deprecated in API 26
+                vibrator.vibrate(vibrationTime)
+            }
+        })
+
+        viewModel.requestFailure.observe(viewLifecycleOwner, Observer {
+            toast.show()
+        })
     }
 
     private fun findViews(view: View) {
@@ -88,91 +127,91 @@ class RemoteFragment : Fragment() {
 
     private fun attachListeners() {
         buttonPower.setOnClickListener {
-            viewModel.sendPower()
+            viewModel.sendButton(RemoteButton.POWER)
         }
 
         buttonVolUp.setOnClickListener {
-            viewModel.sendVolumeUp()
+            viewModel.sendButton(RemoteButton.VOLUME_UP)
         }
 
         buttonVolDown.setOnClickListener {
-            viewModel.sendVolumeDown()
+            viewModel.sendButton(RemoteButton.VOLUME_DOWN)
         }
 
         buttonChUp.setOnClickListener {
-            viewModel.sendChannelUp()
+            viewModel.sendButton(RemoteButton.CHANNEL_UP)
         }
 
         buttonChDown.setOnClickListener {
-            viewModel.sendChannelDown()
+            viewModel.sendButton(RemoteButton.CHANNEL_DOWN)
         }
 
         buttonMute.setOnClickListener {
-            viewModel.sendMute()
+            viewModel.sendButton(RemoteButton.MUTE)
         }
 
         buttonInput.setOnClickListener {
-            viewModel.sendInput()
+            viewModel.sendButton(RemoteButton.INPUT)
         }
 
         buttonUp.setOnClickListener {
-            viewModel.sendUp()
+            viewModel.sendButton(RemoteButton.UP)
         }
 
         buttonDown.setOnClickListener {
-            viewModel.sendDown()
+            viewModel.sendButton(RemoteButton.DOWN)
         }
 
         buttonRight.setOnClickListener {
-            viewModel.sendRight()
+            viewModel.sendButton(RemoteButton.RIGHT)
         }
 
         buttonLeft.setOnClickListener {
-            viewModel.sendLeft()
+            viewModel.sendButton(RemoteButton.LEFT)
         }
 
         buttonEnter.setOnClickListener {
-            viewModel.sendSelect()
+            viewModel.sendButton(RemoteButton.SELECT)
         }
 
         buttonZero.setOnClickListener {
-            viewModel.sendZero()
+            viewModel.sendButton(RemoteButton.ZERO)
         }
 
         buttonOne.setOnClickListener {
-            viewModel.sendOne()
+            viewModel.sendButton(RemoteButton.ONE)
         }
 
         buttonTwo.setOnClickListener {
-            viewModel.sendTwo()
+            viewModel.sendButton(RemoteButton.TWO)
         }
 
         buttonThree.setOnClickListener {
-            viewModel.sendThree()
+            viewModel.sendButton(RemoteButton.THREE)
         }
 
         buttonFour.setOnClickListener {
-            viewModel.sendFour()
+            viewModel.sendButton(RemoteButton.FOUR)
         }
 
         buttonFive.setOnClickListener {
-            viewModel.sendFive()
+            viewModel.sendButton(RemoteButton.FIVE)
         }
 
         buttonSix.setOnClickListener {
-            viewModel.sendSix()
+            viewModel.sendButton(RemoteButton.SIX)
         }
 
         buttonSeven.setOnClickListener {
-            viewModel.sendSeven()
+            viewModel.sendButton(RemoteButton.SEVEN)
         }
 
         buttonEight.setOnClickListener {
-            viewModel.sendEight()
+            viewModel.sendButton(RemoteButton.EIGHT)
         }
 
         buttonNine.setOnClickListener {
-            viewModel.sendNine()
+            viewModel.sendButton(RemoteButton.NINE)
         }
     }
 

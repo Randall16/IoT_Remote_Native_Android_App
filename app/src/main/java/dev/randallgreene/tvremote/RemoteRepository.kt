@@ -2,7 +2,6 @@ package dev.randallgreene.tvremote
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.annotation.WorkerThread
 import java.lang.Exception
 
@@ -12,7 +11,7 @@ class RemoteRepository(application: Application) {
         .getSharedPreferences(USER_PREFS, Context.MODE_PRIVATE)
 
     private val ipAddress: String
-        get() = userPreferences.getString(IP_KEY, null) ?: "192.168.0.6"
+        get() = userPreferences.getString(IP_KEY, null) ?: "192.168.0.6" // default ip
 
     private val url: String
         get() = "http://$ipAddress:5000"
@@ -28,8 +27,7 @@ class RemoteRepository(application: Application) {
     @WorkerThread
     suspend fun sendButton(button: RemoteButton): Boolean {
         try {
-            val s = remoteApi.sendButton(button.str).await()
-            Log.i("reqer", s)
+            remoteApi.sendButton(button.str).await()
         } catch (exception: Exception) {
             return false
         }
