@@ -14,7 +14,7 @@ private val okHttpClient = OkHttpClient.Builder()
     .connectTimeout(TIME_OUT, TimeUnit.MILLISECONDS)
     .build()
 
-fun createRemoteAPI(ipAddress: String) = Retrofit.Builder()
+fun createRemoteAPI(ipAddress: String): RemoteInterface = Retrofit.Builder()
     .baseUrl(ipAddress)
     .addConverterFactory(ScalarsConverterFactory.create())
     .addCallAdapterFactory(CoroutineCallAdapterFactory())

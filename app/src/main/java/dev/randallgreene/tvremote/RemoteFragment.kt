@@ -57,8 +57,8 @@ class RemoteFragment : Fragment() {
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         subscribeToViewModel()
     }
@@ -77,7 +77,7 @@ class RemoteFragment : Fragment() {
             Toast.LENGTH_LONG
         )
 
-        viewModel.requestSuccess.observe(viewLifecycleOwner, Observer {
+        viewModel.requestSuccess.observe(viewLifecycleOwner, {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 vibrator.vibrate(VibrationEffect.createOneShot(
                     vibrationTime,
@@ -89,7 +89,7 @@ class RemoteFragment : Fragment() {
             }
         })
 
-        viewModel.requestFailure.observe(viewLifecycleOwner, Observer {
+        viewModel.requestFailure.observe(viewLifecycleOwner, {
             toast.show()
         })
     }
